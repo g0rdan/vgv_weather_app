@@ -15,16 +15,6 @@ enum WeatherCondition {
 }
 
 class Weather extends Equatable {
-  final WeatherCondition condition;
-  final String formattedCondition;
-  final double minTemp;
-  final double temp;
-  final double maxTemp;
-  final int locationId;
-  final String created;
-  final DateTime lastUpdated;
-  final String location;
-
   const Weather({
     required this.condition,
     required this.formattedCondition,
@@ -36,6 +26,16 @@ class Weather extends Equatable {
     required this.lastUpdated,
     required this.location,
   });
+
+  final WeatherCondition condition;
+  final String formattedCondition;
+  final double minTemp;
+  final double temp;
+  final double maxTemp;
+  final int locationId;
+  final String created;
+  final DateTime lastUpdated;
+  final String location;
 
   @override
   List<Object> get props => [

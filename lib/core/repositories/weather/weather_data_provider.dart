@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:vgv_weather_app/core/models/weather.dart';
 
 class WeatherDataProvider {
+  const WeatherDataProvider({required this.httpClient});
+
   static const baseUrl = 'https://www.metaweather.com';
   final http.Client httpClient;
-
-  const WeatherDataProvider({required this.httpClient});
 
   Future<int> getLocationId(String city) async {
     final locationUrl = Uri.parse('$baseUrl/api/location/search/?query=$city');
