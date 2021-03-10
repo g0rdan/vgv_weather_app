@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:vgv_weather_app/core/models/weather.dart';
@@ -13,7 +14,10 @@ class WeatherDataProvider {
     final locationUrl = Uri.parse('$baseUrl/api/location/search/?query=$city');
     final locationResponse = await httpClient.get(locationUrl);
     if (locationResponse.statusCode != 200) {
-      throw Exception('error getting locationId for city');
+      throw HttpException(
+        'error getting locationId for city',
+        uri: locationUrl,
+      );
     }
 
     final locationJson = jsonDecode(locationResponse.body) as List;
@@ -25,7 +29,10 @@ class WeatherDataProvider {
     final weatherResponse = await httpClient.get(weatherUrl);
 
     if (weatherResponse.statusCode != 200) {
-      throw Exception('error getting weather for location');
+      throw HttpException(
+        'error getting weather for location',
+        uri: weatherUrl,
+      );
     }
 
     final weatherJson = jsonDecode(weatherResponse.body);
