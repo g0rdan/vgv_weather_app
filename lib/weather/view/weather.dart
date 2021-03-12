@@ -32,22 +32,13 @@ class _WeatherState extends State<Weather> {
       appBar: AppBar(
         title: const Text('Flutter Weather'),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return BlocProvider(
-                      create: (context) => SettingsCubit(),
-                      child: Settings(),
-                    );
-                  },
-                ),
-              );
-            },
-          ),
+          BlocBuilder<SettingsCubit, SettingsState>(builder: (context, state) {
+            return Switch(
+              value: state.temperatureUnits == TemperatureUnit.celsius,
+              onChanged: (_) =>
+                  BlocProvider.of<SettingsCubit>(context).toggle(),
+            );
+          }),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () async {
