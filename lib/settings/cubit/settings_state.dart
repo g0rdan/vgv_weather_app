@@ -1,7 +1,5 @@
 part of 'settings_cubit.dart';
 
-enum TemperatureUnit { fahrenheit, celsius }
-
 class SettingsState extends Equatable {
   const SettingsState({required this.temperatureUnits});
 

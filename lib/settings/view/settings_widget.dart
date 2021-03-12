@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vgv_weather_app/core/models/models.dart';
 import 'package:vgv_weather_app/settings/cubit/settings_cubit.dart';
 
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // final settingsBloc = BlocProvider.of<SettingsCubit>(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: ListView(
@@ -18,7 +20,7 @@ class Settings extends StatelessWidget {
                 'Use metric measurements for temperature units.',
               ),
               trailing: Switch(
-                value: state.temperatureUnits == TemperatureUnit.celsius,
+                value: _isMetric(state),
                 onChanged: (_) =>
                     BlocProvider.of<SettingsCubit>(context).toggle(),
               ),
@@ -27,5 +29,9 @@ class Settings extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool _isMetric(SettingsState state) {
+    return state.temperatureUnits == TemperatureUnit.celsius;
   }
 }
