@@ -16,6 +16,8 @@ dependencies:
   intl: ^0.17.0
   http: ^0.13.0
   equatable: ^2.0.0
+  vgv_weather_city:
+     path: lib/features/city
 
 dev_dependencies:
   flutter_test:
