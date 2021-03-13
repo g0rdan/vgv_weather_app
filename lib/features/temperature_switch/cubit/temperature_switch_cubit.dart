@@ -2,19 +2,20 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:vgv_weather_app/core/models/models.dart';
 
-part 'settings_state.dart';
+part 'temperature_switch_state.dart';
 
-class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit()
-      : super(
-            const SettingsState(temperatureUnits: TemperatureUnit.fahrenheit));
+class TemperatureSwitchCubit extends Cubit<TemperatureSwitchState> {
+  TemperatureSwitchCubit()
+      : super(const TemperatureSwitchState(
+          temperatureUnits: TemperatureUnit.fahrenheit,
+        ));
 
   void toggle() {
     state.temperatureUnits == TemperatureUnit.fahrenheit
-        ? emit(const SettingsState(
+        ? emit(const TemperatureSwitchState(
             temperatureUnits: TemperatureUnit.celsius,
           ))
-        : emit(const SettingsState(
+        : emit(const TemperatureSwitchState(
             temperatureUnits: TemperatureUnit.fahrenheit,
           ));
   }

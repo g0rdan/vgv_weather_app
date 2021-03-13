@@ -1,22 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vgv_weather_app/city/view/city_selection.dart';
 import 'package:vgv_weather_app/core/views/gradient_container.dart';
-import 'package:vgv_weather_app/core/views/widgets.dart';
-import 'package:vgv_weather_app/settings/view/settings_widget.dart';
-import 'package:vgv_weather_app/theme/cubit/theme_cubit.dart';
-import 'package:vgv_weather_app/weather/bloc/weather_bloc.dart';
-import 'package:vgv_weather_app/weather/view/combined_weather_temperature.dart';
+import 'package:vgv_weather_app/features/city/view/export.dart';
+import 'package:vgv_weather_app/features/temperature_switch/view/export.dart';
+import 'package:vgv_weather_app/features/theme/cubit/theme_cubit.dart';
+import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
+import 'package:vgv_weather_app/features/weather/view/export.dart';
 
-class Weather extends StatefulWidget {
+class WeatherPage extends StatefulWidget {
   @override
-  State<Weather> createState() => _WeatherState();
+  State<WeatherPage> createState() => _WeatherPageState();
 }
 
-class _WeatherState extends State<Weather> {
+class _WeatherPageState extends State<WeatherPage> {
   late Completer<void> _refreshCompleter;
 
   @override
@@ -48,9 +46,16 @@ class _WeatherState extends State<Weather> {
                 if (state is WeatherLoadInProgress) {
                   return const Center(child: CircularProgressIndicator());
                 }
+                if (state is WeatherLoadFailure) {
+                  return const Center(
+                    child: Text(
+                      'Something went wrong!',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  );
+                }
                 if (state is WeatherLoadSuccess) {
                   final weather = state.weather;
-
                   return BlocBuilder<ThemeCubit, ThemeState>(
                     builder: (context, themeState) {
                       return GradientContainer(
@@ -64,47 +69,13 @@ class _WeatherState extends State<Weather> {
                           },
                           child: Column(
                             children: [
-                              Expanded(
-                                child: ListView(
-                                  children: <Widget>[
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(top: 100.0),
-                                      child: Center(
-                                        child: Location(
-                                            location: weather.location),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: LastUpdated(
-                                          dateTime: weather.lastUpdated),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 50.0),
-                                      child: Center(
-                                        child: CombinedWeatherTemperature(
-                                          weather: weather,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Settings(),
+                              ForecastView(weather: weather),
+                              TemperatureSwitch(),
                             ],
                           ),
                         ),
                       );
                     },
-                  );
-                }
-                if (state is WeatherLoadFailure) {
-                  return const Center(
-                    child: Text(
-                      'Something went wrong!',
-                      style: TextStyle(color: Colors.red),
-                    ),
                   );
                 }
                 return Container();

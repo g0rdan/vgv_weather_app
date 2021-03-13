@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:vgv_weather_app/core/models/weather.dart';
-import 'package:vgv_weather_app/core/repositories/weather/weather_repository.dart';
+import 'package:vgv_weather_app/features/weather/repository/weather/export.dart';
 
 part 'weather_event.dart';
 part 'weather_state.dart';

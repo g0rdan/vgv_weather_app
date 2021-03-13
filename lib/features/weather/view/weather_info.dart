@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_weather_app/core/models/models.dart';
-import 'package:vgv_weather_app/core/views/widgets.dart';
-import 'package:vgv_weather_app/settings/cubit/settings_cubit.dart';
+import 'package:vgv_weather_app/core/views/export.dart';
+import 'package:vgv_weather_app/features/temperature_switch/cubit/temperature_switch_cubit.dart';
 
-class CombinedWeatherTemperature extends StatelessWidget {
-  const CombinedWeatherTemperature({required this.weather});
+class WeatherInfo extends StatelessWidget {
+  const WeatherInfo({required this.weather});
 
   final Weather weather;
 
@@ -23,7 +23,9 @@ class CombinedWeatherTemperature extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: BlocBuilder<SettingsCubit, SettingsState>(
+              // ignore: lines_longer_than_80_chars
+              child:
+                  BlocBuilder<TemperatureSwitchCubit, TemperatureSwitchState>(
                 builder: (context, state) {
                   return Temperature(
                     temperature: weather.temp,

@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_weather_app/core/models/models.dart';
-import 'package:vgv_weather_app/settings/cubit/settings_cubit.dart';
+import 'package:vgv_weather_app/features/temperature_switch/cubit/temperature_switch_cubit.dart';
 
-class Settings extends StatelessWidget {
+class TemperatureSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       child: ListView(
         children: <Widget>[
-          BlocBuilder<SettingsCubit, SettingsState>(builder: (context, state) {
+          BlocBuilder<TemperatureSwitchCubit, TemperatureSwitchState>(builder: (
+            context,
+            state,
+          ) {
             return ListTile(
               title: const Text('Temperature Units'),
               isThreeLine: true,
@@ -21,7 +24,7 @@ class Settings extends StatelessWidget {
               trailing: Switch(
                 value: _isMetric(state),
                 onChanged: (_) =>
-                    BlocProvider.of<SettingsCubit>(context).toggle(),
+                    BlocProvider.of<TemperatureSwitchCubit>(context).toggle(),
               ),
             );
           }),
@@ -30,7 +33,7 @@ class Settings extends StatelessWidget {
     );
   }
 
-  bool _isMetric(SettingsState state) {
+  bool _isMetric(TemperatureSwitchState state) {
     return state.temperatureUnits == TemperatureUnit.celsius;
   }
 }
