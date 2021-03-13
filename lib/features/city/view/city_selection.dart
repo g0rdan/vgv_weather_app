@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_weather_app/features/city/bloc/city_selection_bloc.dart';
-import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
 
 class CitySelection extends StatefulWidget {
   @override
@@ -29,39 +28,27 @@ class _CitySelectionState extends State<CitySelection> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CitySelectionBloc, CitySelectionState>(
-      listener: (context, state) {
-        if (state is CityNameSubmitted) {
-          if (FocusScope.of(context).isFirstFocus) {
-            FocusScope.of(context).requestFocus(FocusNode());
-          }
-          BlocProvider.of<WeatherBloc>(context).add(WeatherRequested(
-            city: state.name,
-          ));
-        }
-      },
-      child: Form(
-        child: Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: TextFormField(
-                  controller: _textController,
-                  onFieldSubmitted: (_) => _onSubmitted(),
-                  decoration: const InputDecoration(
-                    labelText: 'City',
-                    hintText: 'New York',
-                  ),
+    return Form(
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: TextFormField(
+                controller: _textController,
+                onFieldSubmitted: (_) => _onSubmitted(),
+                decoration: const InputDecoration(
+                  labelText: 'City',
+                  hintText: 'New York',
                 ),
               ),
             ),
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: _onSubmitted,
-            )
-          ],
-        ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: _onSubmitted,
+          )
+        ],
       ),
     );
   }
