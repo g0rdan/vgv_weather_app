@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vgv_weather_app/city/bloc/city_selection_bloc.dart';
 import 'package:vgv_weather_app/core/models/temperature.dart';
 import 'package:vgv_weather_app/core/repositories/weather/weather.dart';
 import 'package:vgv_weather_app/settings/cubit/settings_cubit.dart';
@@ -35,6 +36,9 @@ class WeatherPage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SettingsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CitySelectionBloc(),
         ),
       ],
       child: Weather(),

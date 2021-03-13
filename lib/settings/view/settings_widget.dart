@@ -7,10 +7,9 @@ import 'package:vgv_weather_app/settings/cubit/settings_cubit.dart';
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final settingsBloc = BlocProvider.of<SettingsCubit>(context);
-    return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
-      body: ListView(
+    return Container(
+      height: 100,
+      child: ListView(
         children: <Widget>[
           BlocBuilder<SettingsCubit, SettingsState>(builder: (context, state) {
             return ListTile(
