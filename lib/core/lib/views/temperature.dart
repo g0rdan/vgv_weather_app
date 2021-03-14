@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vgv_core/models/temperature.dart';
-// import 'package:vgv_weather_app/core/lib/models/export.dart';
 
 class Temperature extends StatelessWidget {
   const Temperature({
