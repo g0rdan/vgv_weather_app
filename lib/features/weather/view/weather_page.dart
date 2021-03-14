@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vgv_weather_app/core/views/animated_background.dart';
 import 'package:vgv_weather_app/features/temperature_switch/view/export.dart';
 import 'package:vgv_weather_app/features/theme/cubit/theme_cubit.dart';
+import 'package:vgv_weather_app/features/theme/view/export.dart';
 import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather_app/features/weather/view/export.dart';
 import 'package:vgv_weather_city/bloc/city_selection_bloc.dart';
@@ -69,27 +69,21 @@ class _WeatherPageState extends State<WeatherPage> {
                   }
                   if (state is WeatherLoadSuccess) {
                     final weather = state.weather;
-                    return BlocBuilder<ThemeCubit, ThemeState>(
-                      builder: (context, themeState) {
-                        return AnimatedBackground(
-                          color: themeState.color,
-                          prevColor: themeState.prevColor,
-                          child: RefreshIndicator(
-                            onRefresh: () {
-                              BlocProvider.of<WeatherBloc>(context).add(
-                                WeatherRefreshRequested(city: weather.location),
-                              );
-                              return _refreshCompleter.future;
-                            },
-                            child: Column(
-                              children: [
-                                ForecastView(weather: weather),
-                                TemperatureSwitch(),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                    return AnimatedBackground(
+                      child: RefreshIndicator(
+                        onRefresh: () {
+                          BlocProvider.of<WeatherBloc>(context).add(
+                            WeatherRefreshRequested(city: weather.location),
+                          );
+                          return _refreshCompleter.future;
+                        },
+                        child: Column(
+                          children: [
+                            ForecastView(weather: weather),
+                            TemperatureSwitch(),
+                          ],
+                        ),
+                      ),
                     );
                   }
                   return Container();
