@@ -1,4 +1,4 @@
-name: vgv_weather_city
+name: vgv_weather_temperature_switch
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
@@ -12,6 +12,8 @@ dependencies:
   bloc: ^7.0.0-nullsafety.3
   flutter_bloc: ^7.0.0-nullsafety.4
   equatable: ^2.0.0
+  vgv_core:
+    path: ../../core
 
 dev_dependencies:
   flutter_test:

@@ -17,8 +17,14 @@ dependencies:
   http: ^0.13.0
   equatable: ^2.0.0
   simple_animations: ^3.0.1 
+  vgv_core:
+    path: lib/core
   vgv_weather_city:
-     path: lib/features/city
+    path: lib/features/city
+  vgv_weather_temperature_switch:
+    path: lib/features/temperature_switch
+  vgv_theme:
+    path: lib/features/theme
 
 dev_dependencies:
   flutter_test:

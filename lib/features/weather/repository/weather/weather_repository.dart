@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:vgv_weather_app/core/models/weather.dart';
+import 'package:vgv_core/models/export.dart';
 import 'package:vgv_weather_app/features/weather/repository/weather/weather_data_provider.dart';
 
 class WeatherRepository {

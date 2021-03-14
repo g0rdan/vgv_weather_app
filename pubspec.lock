@@ -441,10 +441,31 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  vgv_core:
+    dependency: "direct main"
+    description:
+      path: "lib/core"
+      relative: true
+    source: path
+    version: "0.0.1"
+  vgv_theme:
+    dependency: "direct main"
+    description:
+      path: "lib/features/theme"
+      relative: true
+    source: path
+    version: "0.0.1"
   vgv_weather_city:
     dependency: "direct main"
     description:
       path: "lib/features/city"
+      relative: true
+    source: path
+    version: "0.0.1"
+  vgv_weather_temperature_switch:
+    dependency: "direct main"
+    description:
+      path: "lib/features/temperature_switch"
       relative: true
     source: path
     version: "0.0.1"

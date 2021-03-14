@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:vgv_weather_app/core/models/weather.dart';
-import 'package:vgv_weather_app/core/views/export.dart';
+import 'package:vgv_core/models/export.dart';
+import 'package:vgv_core/views/export.dart';
 import 'package:vgv_weather_app/features/weather/view/export.dart';
 
 class ForecastView extends StatelessWidget {

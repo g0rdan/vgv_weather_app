@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vgv_weather_app/features/temperature_switch/view/export.dart';
-import 'package:vgv_weather_app/features/theme/cubit/theme_cubit.dart';
-import 'package:vgv_weather_app/features/theme/view/export.dart';
+import 'package:vgv_theme/cubit/theme_cubit.dart';
+import 'package:vgv_theme/view/export.dart';
 import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather_app/features/weather/view/export.dart';
 import 'package:vgv_weather_city/bloc/city_selection_bloc.dart';
 import 'package:vgv_weather_city/view/export.dart';
+import 'package:vgv_weather_temperature_switch/view/export.dart';
 
 class WeatherPage extends StatefulWidget {
   @override

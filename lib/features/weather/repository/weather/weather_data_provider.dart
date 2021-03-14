@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:vgv_weather_app/core/exceptions/exception.dart';
-import 'package:vgv_weather_app/core/models/weather.dart';
+import 'package:vgv_core/exceptions/export.dart';
+import 'package:vgv_core/models/export.dart';
 
 class WeatherDataProvider {
   const WeatherDataProvider({required this.httpClient});

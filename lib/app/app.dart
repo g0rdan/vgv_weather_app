@@ -8,9 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:vgv_weather_app/features/temperature_switch/cubit/temperature_switch_cubit.dart';
-import 'package:vgv_weather_app/features/theme/cubit/theme_cubit.dart';
-import 'package:vgv_weather_app/features/theme/repository/theme_repository.dart';
+import 'package:vgv_theme/cubit/theme_cubit.dart';
+import 'package:vgv_theme/repository/theme_repository.dart';
 import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather_app/features/weather/repository/weather/export.dart';
 import 'package:vgv_weather_app/features/weather/view/export.dart';
@@ -18,6 +17,7 @@ import 'package:vgv_weather_app/l10n/l10n.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:vgv_weather_city/bloc/city_selection_bloc.dart';
+import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
