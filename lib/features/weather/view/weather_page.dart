@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vgv_weather_app/core/views/gradient_container.dart';
+import 'package:vgv_weather_app/core/views/animated_background.dart';
 import 'package:vgv_weather_app/features/temperature_switch/view/export.dart';
 import 'package:vgv_weather_app/features/theme/cubit/theme_cubit.dart';
 import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
@@ -71,8 +71,9 @@ class _WeatherPageState extends State<WeatherPage> {
                     final weather = state.weather;
                     return BlocBuilder<ThemeCubit, ThemeState>(
                       builder: (context, themeState) {
-                        return GradientContainer(
+                        return AnimatedBackground(
                           color: themeState.color,
+                          prevColor: themeState.prevColor,
                           child: RefreshIndicator(
                             onRefresh: () {
                               BlocProvider.of<WeatherBloc>(context).add(

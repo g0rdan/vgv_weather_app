@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:vgv_weather_app/features/temperature_switch/cubit/temperature_switch_cubit.dart';
 import 'package:vgv_weather_app/features/theme/cubit/theme_cubit.dart';
+import 'package:vgv_weather_app/features/theme/repository/theme_repository.dart';
 import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather_app/features/weather/repository/weather/export.dart';
 import 'package:vgv_weather_app/features/weather/view/export.dart';
@@ -28,6 +29,7 @@ class App extends StatelessWidget {
         httpClient: http.Client(),
       ),
     );
+    final themeRepository = ThemeRepository();
 
     return MaterialApp(
       theme: ThemeData(
@@ -47,10 +49,13 @@ class App extends StatelessWidget {
             ),
           ),
           BlocProvider(
-            create: (context) => ThemeCubit(ThemeState(
-              theme: ThemeData.light(),
-              color: Colors.lightBlue,
-            )),
+            create: (context) => ThemeCubit(
+              themeRepository: themeRepository,
+              initialState: const ThemeState(
+                color: Colors.lightBlue,
+                prevColor: Colors.lightBlue,
+              ),
+            ),
           ),
           BlocProvider(
             create: (context) => TemperatureSwitchCubit(),

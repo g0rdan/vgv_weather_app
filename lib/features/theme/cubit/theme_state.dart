@@ -1,11 +1,14 @@
 part of 'theme_cubit.dart';
 
 class ThemeState extends Equatable {
-  const ThemeState({required this.theme, required this.color});
+  const ThemeState({
+    required this.color,
+    required this.prevColor,
+  });
 
-  final ThemeData theme;
   final MaterialColor color;
+  final MaterialColor prevColor;
 
   @override
-  List<Object> get props => [theme, color];
+  List<Object> get props => [color, prevColor];
 }
