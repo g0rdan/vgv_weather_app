@@ -10,7 +10,6 @@ class Weather extends Equatable {
     required this.maxTemp,
     required this.locationId,
     required this.created,
-    required this.lastUpdated,
     required this.location,
   });
 
@@ -21,7 +20,6 @@ class Weather extends Equatable {
   final double maxTemp;
   final int locationId;
   final String created;
-  final DateTime lastUpdated;
   final String location;
 
   @override
@@ -33,7 +31,6 @@ class Weather extends Equatable {
         maxTemp,
         locationId,
         created,
-        lastUpdated,
         location,
       ];
 
@@ -48,7 +45,6 @@ class Weather extends Equatable {
       maxTemp: consolidatedWeather['max_temp'] as double,
       locationId: json['woeid'] as int,
       created: consolidatedWeather['created'],
-      lastUpdated: DateTime.now(),
       location: json['title'],
     );
   }

@@ -8,14 +8,12 @@ import '../helpers/helpers.dart';
 void main() {
   group('LastUpdated', () {
     testWidgets('renders LastUpdated', (tester) async {
-      final dateTime = DateTime.now();
-      await tester.pumpApp(LastUpdated(dateTime: dateTime));
+      await tester.pumpApp(LastUpdated());
       expect(find.byType(LastUpdated), findsOneWidget);
     });
 
     testWidgets('Shows rigth text in LastUpdated', (tester) async {
-      final dateTime = DateTime.now();
-      await tester.pumpApp(LastUpdated(dateTime: dateTime));
+      await tester.pumpApp(LastUpdated());
       expect(find.textContaining('Updated:'), findsOneWidget);
     });
   });

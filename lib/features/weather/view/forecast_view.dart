@@ -22,9 +22,7 @@ class ForecastView extends StatelessWidget {
               child: Location(location: weather.location),
             ),
           ),
-          Center(
-            child: LastUpdated(dateTime: weather.lastUpdated),
-          ),
+          Center(child: LastUpdated()),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 50.0),
             child: Center(
