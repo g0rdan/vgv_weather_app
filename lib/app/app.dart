@@ -10,9 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:vgv_theme/cubit/theme_cubit.dart';
 import 'package:vgv_theme/repository/theme_repository.dart';
-import 'package:vgv_weather_app/features/weather/bloc/weather_bloc.dart';
-import 'package:vgv_weather_app/features/weather/repository/weather/export.dart';
-import 'package:vgv_weather_app/features/weather/view/export.dart';
+import 'package:vgv_weather/bloc/weather_bloc.dart';
+import 'package:vgv_weather/repository/weather/export.dart';
+import 'package:vgv_weather/view/export.dart';
+
 import 'package:vgv_weather_app/l10n/l10n.dart';
 
 import 'package:http/http.dart' as http;

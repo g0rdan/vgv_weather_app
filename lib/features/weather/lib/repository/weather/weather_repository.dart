@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:vgv_core/models/export.dart';
-import 'package:vgv_weather_app/features/weather/repository/weather/weather_data_provider.dart';
+import 'package:vgv_weather/repository/weather/export.dart';
 
 class WeatherRepository {
   const WeatherRepository({required this.weatherApiClient});

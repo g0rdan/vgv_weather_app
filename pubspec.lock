@@ -150,7 +150,7 @@ packages:
     source: hosted
     version: "1.2.0"
   http:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -325,12 +325,12 @@ packages:
     source: hosted
     version: "0.2.4"
   simple_animations:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: simple_animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -452,6 +452,13 @@ packages:
     dependency: "direct main"
     description:
       path: "lib/features/theme"
+      relative: true
+    source: path
+    version: "0.0.1"
+  vgv_weather:
+    dependency: "direct main"
+    description:
+      path: "lib/features/weather"
       relative: true
     source: path
     version: "0.0.1"
