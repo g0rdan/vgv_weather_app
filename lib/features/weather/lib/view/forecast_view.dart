@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vgv_core/models/export.dart';
 import 'package:vgv_core/views/export.dart';
@@ -13,24 +14,17 @@ class ForecastView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 100.0),
-            child: Center(
-              child: Location(location: weather.location),
-            ),
-          ),
-          Center(child: LastUpdated()),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 50.0),
-            child: Center(
-              child: WeatherInfo(weather: weather),
-            ),
-          ),
-        ],
-      ),
+    return Stack(
+      children: [
+        Center(
+          child: Expanded(child: WeatherInfo(weather: weather)),
+        ),
+        Positioned(
+          left: 16,
+          bottom: 10,
+          child: LastUpdated(),
+        )
+      ],
     );
   }
 }

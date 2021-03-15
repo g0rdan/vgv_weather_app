@@ -79,7 +79,9 @@ class _WeatherPageState extends State<WeatherPage> {
                         },
                         child: Column(
                           children: [
-                            ForecastView(weather: weather),
+                            Expanded(
+                              child: ForecastView(weather: weather),
+                            ),
                             TemperatureSwitch(),
                           ],
                         ),

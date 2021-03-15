@@ -40,7 +40,7 @@ class AnimatedBackground extends StatelessWidget {
           duration: _tween.duration,
           builder: (context, _, value) {
             return Container(
-              key: Key('animated_background'),
+              key: const Key('animated_background'),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,

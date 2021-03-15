@@ -13,7 +13,18 @@ class WeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
+        Center(
+          child: Text(
+            weather.formattedCondition,
+            style: const TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w200,
+              color: Colors.white,
+            ),
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -37,16 +48,6 @@ class WeatherInfo extends StatelessWidget {
               ),
             ),
           ],
-        ),
-        Center(
-          child: Text(
-            weather.formattedCondition,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w200,
-              color: Colors.white,
-            ),
-          ),
         ),
       ],
     );
