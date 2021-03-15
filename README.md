@@ -6,7 +6,7 @@ In order to run the project you need to run:
 sh run.sh
 ```
 
-You need to have flutter version `2.0.1` installed for succesfull launch of the app.
+You need to have flutter version `2.0.1` installed for successful launch of the app.
 
 After getting all packages and cleaning all modules the script will ask you what flavor do you want to run.
 
@@ -18,7 +18,7 @@ This project contains 3 flavors:
 
 After selecting the flavor script will ask on what device do you want to run the app.
 
-You can run specific flavors directly by running following commands:
+You can run specific flavors directly by running the following commands:
 
 ```sh
 # Development
@@ -33,13 +33,13 @@ $ flutter run --flavor production --target lib/main_production.dart
 
 _\*Vgv Weather App works on iOS, Android, and Web._
 
-UPD: Unfortunatelly, the web doesn't work due to missing header in the responses on backend side.
+UPD: Unfortunately, the web doesn't work due to a missing header in the responses on the backend side.
 
 ---
 
 ## Architecture
 
-The app implemets modulized approach working with business logic and uses BLoC architectural pattern. The app has following structure:
+The app implements modulized approach working with business logic and uses BLoC architectural pattern. The app has the following structure:
 
 ```
 ├── core
@@ -49,10 +49,10 @@ The app implemets modulized approach working with business logic and uses BLoC a
 │   └── ...
 ```
 
-Core and each features are separated flutter packages that have their own set of dependencies, tests and so on.
-Some of features migth have dependency on the core but all those dependencies goes through `pubspec.yaml`
+Core and each feature are separated flutter packages that have their own set of dependencies, tests, and so on.
+Some of the features might have a dependency on the core but all those dependencies go through `pubspec.yaml`
 
-Feature by itself is an entity that holds some bussines logic. This logic could be descibed through blocs or cubits from bloc library. In the best case scenario a feature would have structure like this:
+Feature by itself is an entity that holds some business logic. This logic could be described through blocs or cubits from bloc library. In the best case scenario a feature would have a structure like this:
 
 ```
 ├── feature
@@ -62,7 +62,7 @@ Feature by itself is an entity that holds some bussines logic. This logic could 
 │   └── view
 ```
 
-I think it is pretty self-explanatory. `repository`, `models` or even `view` migth not be in the feature. The mandatory part is `bloc/cubit` since it descibses business logic.
+I think it is pretty self-explanatory. `repository`, `models` or even `view` might not be in the feature. The mandatory part is `bloc/cubit` since it descibses business logic.
 
 ---
 
@@ -74,7 +74,7 @@ To run all unit and widget tests use the following command:
 sh test/run_tests.sh 
 ```
 
-All tests in the project are spreaded among the feature modules. Tests structure mimics the feature structure. Meaning, if feature has following structure:
+All tests in the project are spread among the feature modules. Tests structure mimics the feature structure. Meaning, if a feature has the following structure:
 
 ```
 ├── feature
