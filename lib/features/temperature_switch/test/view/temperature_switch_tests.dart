@@ -68,6 +68,10 @@ void main() {
           ),
         ),
       );
+
+      final toggle = find.byKey(const Key('temperature_switch'));
+      await tester.tap(toggle);
+
       expect(find.byType(Switch), findsOneWidget);
     });
   });

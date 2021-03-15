@@ -22,6 +22,7 @@ class TemperatureSwitch extends StatelessWidget {
                 'Use metric system for the temperature.',
               ),
               trailing: Switch(
+                key: const Key('temperature_switch'),
                 value: _isMetric(state),
                 onChanged: (_) =>
                     BlocProvider.of<TemperatureSwitchCubit>(context).toggle(),
