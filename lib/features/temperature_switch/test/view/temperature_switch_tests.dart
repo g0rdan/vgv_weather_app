@@ -37,7 +37,7 @@ void main() {
           ),
         ),
       );
-      expect(find.textContaining('Temperature Units'), findsOneWidget);
+      expect(find.textContaining('Metric system'), findsOneWidget);
     });
 
     testWidgets('find description', (tester) async {
@@ -52,7 +52,7 @@ void main() {
         ),
       );
       expect(
-        find.textContaining('Use metric measurements for temperature units.'),
+        find.textContaining('Use metric system for the temperature.'),
         findsOneWidget,
       );
     });

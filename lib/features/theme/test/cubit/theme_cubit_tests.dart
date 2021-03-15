@@ -39,7 +39,7 @@ void main() {
       act: (cubit) => cubit.weatherChanged(WeatherCondition.clear),
       expect: () => [
         equals(ThemeState(
-          color: Colors.yellow,
+          color: Colors.lime,
           prevColor: Colors.amber,
         ))
       ],
@@ -60,12 +60,12 @@ void main() {
       },
       expect: () => [
         equals(ThemeState(
-          color: Colors.yellow,
+          color: Colors.lime,
           prevColor: Colors.amber,
         )),
         equals(ThemeState(
           color: Colors.deepPurple,
-          prevColor: Colors.yellow,
+          prevColor: Colors.lime,
         ))
       ],
     );

@@ -16,7 +16,7 @@ class TemperatureSwitch extends StatelessWidget {
             state,
           ) {
             return ListTile(
-              title: const Text('Use metric system'),
+              title: const Text('Metric system'),
               isThreeLine: true,
               subtitle: const Text(
                 'Use metric system for the temperature.',
