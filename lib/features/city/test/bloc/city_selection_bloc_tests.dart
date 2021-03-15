@@ -34,4 +34,33 @@ void main() {
       expect: () => <CitySelectionState>[CityNameChanged(name: '')],
     );
   });
+
+  group('CitySelectionEvent', () {
+    test('check props of CitySelected', () {
+      final event = CitySelected(name: 'New York');
+      expect(event.props.length, 1);
+    });
+
+    test('check props of CityChanged', () {
+      final event = CityChanged(text: 'New York');
+      expect(event.props.length, 1);
+    });
+  });
+
+  group('CitySelectionState', () {
+    test('check props of CitySelectionInitial', () {
+      final state = CitySelectionInitial();
+      expect(state.props.length, 0);
+    });
+
+    test('check props of CityNameChanged', () {
+      final state = CityChanged(text: 'New York');
+      expect(state.props.length, 1);
+    });
+
+    test('check props of CityNameSubmitted', () {
+      final state = CityNameSubmitted(name: 'New York');
+      expect(state.props.length, 1);
+    });
+  });
 }

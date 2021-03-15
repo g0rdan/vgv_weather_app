@@ -35,6 +35,7 @@ class _CitySelectionState extends State<CitySelection> {
             child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: TextFormField(
+                key: const Key('text_form_field'),
                 controller: _textController,
                 onFieldSubmitted: (_) => _onSubmitted(),
                 decoration: const InputDecoration(
@@ -45,6 +46,7 @@ class _CitySelectionState extends State<CitySelection> {
             ),
           ),
           IconButton(
+            key: const Key('search_button'),
             icon: const Icon(Icons.search),
             onPressed: _onSubmitted,
           )
