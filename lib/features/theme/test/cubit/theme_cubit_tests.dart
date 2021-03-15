@@ -35,12 +35,60 @@ void main() {
     });
 
     blocTest<ThemeCubit, ThemeState>(
-      'check emiting of the state',
+      'check emiting of the clear state',
       build: () => cubit,
       act: (cubit) => cubit.weatherChanged(WeatherCondition.clear),
       expect: () => [
         equals(const ThemeState(
           color: Colors.lime,
+          prevColor: Colors.amber,
+        ))
+      ],
+    );
+
+    blocTest<ThemeCubit, ThemeState>(
+      'check emiting of the heavy cloud state',
+      build: () => cubit,
+      act: (cubit) => cubit.weatherChanged(WeatherCondition.heavyCloud),
+      expect: () => [
+        equals(const ThemeState(
+          color: Colors.grey,
+          prevColor: Colors.amber,
+        ))
+      ],
+    );
+
+    blocTest<ThemeCubit, ThemeState>(
+      'check emiting of the heavy rain state',
+      build: () => cubit,
+      act: (cubit) => cubit.weatherChanged(WeatherCondition.heavyRain),
+      expect: () => [
+        equals(const ThemeState(
+          color: Colors.indigo,
+          prevColor: Colors.amber,
+        ))
+      ],
+    );
+
+    blocTest<ThemeCubit, ThemeState>(
+      'check emiting of the heavy rain state',
+      build: () => cubit,
+      act: (cubit) => cubit.weatherChanged(WeatherCondition.thunderstorm),
+      expect: () => [
+        equals(const ThemeState(
+          color: Colors.deepPurple,
+          prevColor: Colors.amber,
+        ))
+      ],
+    );
+
+    blocTest<ThemeCubit, ThemeState>(
+      'check emiting of the unknown state',
+      build: () => cubit,
+      act: (cubit) => cubit.weatherChanged(WeatherCondition.unknown),
+      expect: () => [
+        equals(const ThemeState(
+          color: Colors.lightBlue,
           prevColor: Colors.amber,
         ))
       ],
