@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo '[Core tests]:'
+flutter test lib/core/test/vgv_core_test.dart
 echo '[City selection tests]:'
 flutter test lib/features/city/test/vgv_weather_city_test.dart
 echo '[Temperature switch tests]:'
