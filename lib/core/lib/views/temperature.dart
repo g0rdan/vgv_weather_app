@@ -16,10 +16,10 @@ class Temperature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 20.0),
+          padding: const EdgeInsets.only(bottom: 20.0),
           child: Text(
             '${_formattedTemperature(temperature)}°',
             style: const TextStyle(
@@ -29,26 +29,22 @@ class Temperature extends StatelessWidget {
             ),
           ),
         ),
-        Column(
-          children: [
-            Text(
-              'max: ${_formattedTemperature(high)}°',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w100,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              'min: ${_formattedTemperature(low)}°',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w100,
-                color: Colors.white,
-              ),
-            )
-          ],
-        )
+        Text(
+          'max: ${_formattedTemperature(high)}°',
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w100,
+            color: Colors.white,
+          ),
+        ),
+        Text(
+          'min: ${_formattedTemperature(low)}°',
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w100,
+            color: Colors.white,
+          ),
+        ),
       ],
     );
   }

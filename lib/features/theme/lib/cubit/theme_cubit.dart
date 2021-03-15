@@ -18,7 +18,7 @@ class ThemeCubit extends Cubit<ThemeState> {
     switch (condition) {
       case WeatherCondition.clear:
       case WeatherCondition.lightCloud:
-        _emitCondition(Colors.yellow);
+        _emitCondition(Colors.lime);
         break;
       case WeatherCondition.heavyCloud:
         _emitCondition(Colors.grey);
