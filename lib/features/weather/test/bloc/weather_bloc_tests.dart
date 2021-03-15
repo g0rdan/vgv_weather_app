@@ -96,4 +96,16 @@ void main() {
           <WeatherState>[WeatherLoadSuccess(weather: testWeatherModel)],
     );
   });
+
+  group('WeatherEvent', () {
+    test('check props of WeatherRequested', () {
+      final event = const WeatherRequested(city: 'New York');
+      expect(event.props.length, 1);
+    });
+
+    test('check props of WeatherRefreshRequested', () {
+      final event = const WeatherRefreshRequested(city: 'New York');
+      expect(event.props.length, 1);
+    });
+  });
 }
