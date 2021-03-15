@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:bloc_test/bloc_test.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:vgv_core/models/export.dart';
 import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
 import 'package:vgv_weather_temperature_switch/view/export.dart';
-
-class MockTemperatureSwitchCubit extends MockCubit<TemperatureSwitchState>
-    implements TemperatureSwitchCubit {}
 
 void main() {
   group('TemperatureSwitchState', () {
     late TemperatureSwitchCubit cubit;
 
     setUp(() {
-      cubit = MockTemperatureSwitchCubit();
-      when(cubit).calls(#state).thenReturn(
-          TemperatureSwitchState(temperatureUnits: TemperatureUnit.celsius));
+      cubit = TemperatureSwitchCubit();
     });
 
     testWidgets('renders TemperatureSwitchState', (tester) async {

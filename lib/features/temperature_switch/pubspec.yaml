@@ -19,7 +19,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^8.0.0-nullsafety.1
-  mocktail: 0.0.1-dev.12
+  mocktail: 0.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

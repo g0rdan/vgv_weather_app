@@ -41,8 +41,6 @@ class ThemeCubit extends Cubit<ThemeState> {
   }
 
   void _emitCondition(MaterialColor color) {
-    print('prev color: ${themeRepository.prevColor}');
-    print('color: $color');
     emit(ThemeState(
       color: color,
       prevColor: themeRepository.prevColor,

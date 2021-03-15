@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:bloc_test/bloc_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:vgv_theme/cubit/theme_cubit.dart';
+import 'package:vgv_theme/repository/theme_repository.dart';
 import 'package:vgv_theme/view/export.dart';
-
-class MockThemeCubit extends MockCubit<ThemeState> implements ThemeCubit {}
 
 void main() {
   group('Theme View', () {
     late ThemeCubit cubit;
 
     setUp(() {
-      cubit = MockThemeCubit();
-      when(cubit).calls(#state).thenReturn(ThemeState(
-            color: Colors.green,
-            prevColor: Colors.red,
-          ));
+      cubit = ThemeCubit(
+        themeRepository: ThemeRepository(),
+        initialState: ThemeState(
+          color: Colors.green,
+          prevColor: Colors.red,
+        ),
+      );
     });
 
     testWidgets('renders animation background', (tester) async {
@@ -36,7 +35,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byKey(Key(('animated_background'))), findsOneWidget);
+      expect(find.byKey(Key('animated_background')), findsOneWidget);
     });
   });
 }

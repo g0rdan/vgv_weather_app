@@ -17,7 +17,6 @@ class AnimatedBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
-      key: Key('animated_background'),
       builder: (context, themeState) {
         final _tween = MultiTween<AniColors>()
           ..add(
@@ -41,6 +40,7 @@ class AnimatedBackground extends StatelessWidget {
           duration: _tween.duration,
           builder: (context, _, value) {
             return Container(
+              key: Key('animated_background'),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
