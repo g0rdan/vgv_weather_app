@@ -13,7 +13,7 @@ void main() {
   group('WeatherBloc', () {
     late WeatherRepository weatherRepository;
 
-    final testWeatherModel = Weather(
+    final testWeatherModel = const Weather(
       condition: WeatherCondition.clear,
       created: 'created',
       formattedCondition: 'Clear',
@@ -31,7 +31,7 @@ void main() {
       when(() => weatherRepository.getWeather('incorrect request'))
           .thenThrow(Exception());
       when(() => weatherRepository.getWeather('incorrect http request'))
-          .thenThrow(HttpException('http exception'));
+          .thenThrow(const HttpException('http exception'));
     });
 
     blocTest<WeatherBloc, WeatherState>(
@@ -44,7 +44,7 @@ void main() {
       'check correct city request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) async =>
-          bloc.add(WeatherRequested(city: 'New York')),
+          bloc.add(const WeatherRequested(city: 'New York')),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
         WeatherLoadSuccess(weather: testWeatherModel)
@@ -55,7 +55,7 @@ void main() {
       'check correct city refresh request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) async =>
-          bloc.add(WeatherRefreshRequested(city: 'New York')),
+          bloc.add(const WeatherRefreshRequested(city: 'New York')),
       expect: () =>
           <WeatherState>[WeatherLoadSuccess(weather: testWeatherModel)],
     );
@@ -64,10 +64,12 @@ void main() {
       'check incorrect city request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) async =>
-          bloc.add(WeatherRequested(city: 'incorrect request')),
+          bloc.add(const WeatherRequested(city: 'incorrect request')),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
-        WeatherLoadFailure(message: 'Something went wrong. Can\'t get data')
+        const WeatherLoadFailure(
+          message: 'Something went wrong. Can\'t get data',
+        )
       ],
     );
 
@@ -75,10 +77,10 @@ void main() {
       'check incorrect http city request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) async =>
-          bloc.add(WeatherRequested(city: 'incorrect http request')),
+          bloc.add(const WeatherRequested(city: 'incorrect http request')),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
-        WeatherLoadFailure(message: 'http exception')
+        const WeatherLoadFailure(message: 'http exception')
       ],
     );
 
@@ -86,8 +88,9 @@ void main() {
       'check incorrect city refresh request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) {
-        bloc.add(WeatherRefreshRequested(city: 'New York'));
-        bloc.add(WeatherRefreshRequested(city: 'incorrect request'));
+        bloc.add(const WeatherRefreshRequested(city: 'New York'));
+        // ignore: cascade_invocations
+        bloc.add(const WeatherRefreshRequested(city: 'incorrect request'));
       },
       expect: () =>
           <WeatherState>[WeatherLoadSuccess(weather: testWeatherModel)],

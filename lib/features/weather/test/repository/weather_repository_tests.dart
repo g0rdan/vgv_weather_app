@@ -10,7 +10,7 @@ void main() {
   group('WeatherRepository tests', () {
     late WeatherDataProvider dataProvider;
 
-    final succesfullWeather = Weather(
+    final succesfullWeather = const Weather(
       condition: WeatherCondition.clear,
       created: 'created',
       formattedCondition: 'Clear',
@@ -26,11 +26,11 @@ void main() {
       when(() => dataProvider.getLocationId('New York'))
           .thenAnswer((invocation) async => 42);
       when(() => dataProvider.getLocationId(''))
-          .thenThrow(WeatherException('WeatherException'));
+          .thenThrow(const WeatherException('WeatherException'));
       when(() => dataProvider.fetchWeather(42))
           .thenAnswer((invocation) async => succesfullWeather);
       when(() => dataProvider.fetchWeather(0))
-          .thenThrow(WeatherException('WeatherException'));
+          .thenThrow(const WeatherException('WeatherException'));
     });
 
     test(
@@ -48,7 +48,7 @@ void main() {
         final weatherRepo = WeatherRepository(weatherApiClient: dataProvider);
         try {
           await weatherRepo.getWeather('');
-          fail("exception not thrown");
+          fail('exception not thrown');
         } catch (e) {
           expect(e, isInstanceOf<WeatherException>());
         }

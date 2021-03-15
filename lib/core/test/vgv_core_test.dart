@@ -1,9 +1,9 @@
-import './model/weather_model_tests.dart' as modelTests;
-import './repository/device_repostory_tests.dart' as repositoryTests;
-import './view/core_view_tests.dart' as viewTests;
+import './model/weather_model_tests.dart' as model_tests;
+import './repository/device_repostory_tests.dart' as repository_tests;
+import './view/core_view_tests.dart' as view_tests;
 
 void main() {
-  modelTests.main();
-  repositoryTests.main();
-  viewTests.main();
+  model_tests.main();
+  repository_tests.main();
+  view_tests.main();
 }

@@ -12,6 +12,7 @@ void main() {
 
     setUp(() {
       themeRepository = ThemeRepository();
+      // ignore: cascade_invocations
       themeRepository.prevColor = Colors.amber;
       cubit = ThemeCubit(
         themeRepository: themeRepository,
@@ -38,7 +39,7 @@ void main() {
       build: () => cubit,
       act: (cubit) => cubit.weatherChanged(WeatherCondition.clear),
       expect: () => [
-        equals(ThemeState(
+        equals(const ThemeState(
           color: Colors.lime,
           prevColor: Colors.amber,
         ))
@@ -56,14 +57,15 @@ void main() {
       ),
       act: (cubit) {
         cubit.weatherChanged(WeatherCondition.clear);
+        // ignore: cascade_invocations
         cubit.weatherChanged(WeatherCondition.thunderstorm);
       },
       expect: () => [
-        equals(ThemeState(
+        equals(const ThemeState(
           color: Colors.lime,
           prevColor: Colors.amber,
         )),
-        equals(ThemeState(
+        equals(const ThemeState(
           color: Colors.deepPurple,
           prevColor: Colors.lime,
         ))

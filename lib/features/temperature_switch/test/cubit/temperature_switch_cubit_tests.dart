@@ -20,7 +20,7 @@ void main() {
       build: () => TemperatureSwitchCubit(),
       act: (cubit) => cubit.toggle(),
       expect: () => [
-        equals(TemperatureSwitchState(
+        equals(const TemperatureSwitchState(
           temperatureUnits: TemperatureUnit.celsius,
         ))
       ],
@@ -31,13 +31,14 @@ void main() {
       build: () => TemperatureSwitchCubit(),
       act: (cubit) {
         cubit.toggle();
+        // ignore: cascade_invocations
         cubit.toggle();
       },
       expect: () => [
-        equals(TemperatureSwitchState(
+        equals(const TemperatureSwitchState(
           temperatureUnits: TemperatureUnit.celsius,
         )),
-        equals(TemperatureSwitchState(
+        equals(const TemperatureSwitchState(
           temperatureUnits: TemperatureUnit.fahrenheit,
         ))
       ],

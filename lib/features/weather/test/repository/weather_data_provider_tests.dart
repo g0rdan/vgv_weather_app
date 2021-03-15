@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
@@ -26,6 +24,7 @@ void main() {
 
       when(() => httpClient.get(Uri.parse(locationEndpoint)))
           .thenAnswer((invocation) async => Response(
+                // ignore: lines_longer_than_80_chars
                 '[{"title":"New York","location_type":"City","woeid":2379574,"latt_long":"41.884151,-87.632408"}]',
                 200,
               ));
@@ -64,7 +63,7 @@ void main() {
         final weatherDataProvider = WeatherDataProvider(httpClient: httpClient);
         try {
           await weatherDataProvider.getLocationId('');
-          fail("exception not thrown");
+          fail('exception not thrown');
         } catch (e) {
           expect(e, isInstanceOf<WeatherException>());
         }
@@ -77,7 +76,7 @@ void main() {
         final weatherDataProvider = WeatherDataProvider(httpClient: httpClient);
         try {
           await weatherDataProvider.fetchWeather(0);
-          fail("exception not thrown");
+          fail('exception not thrown');
         } catch (e) {
           expect(e, isInstanceOf<WeatherException>());
         }

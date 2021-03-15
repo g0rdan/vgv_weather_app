@@ -8,6 +8,7 @@ void main() {
 
     setUp(() {
       repo = ThemeRepository();
+      // ignore: cascade_invocations
       repo.prevColor = Colors.amber;
     });
 

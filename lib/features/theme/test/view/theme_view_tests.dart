@@ -12,7 +12,7 @@ void main() {
     setUp(() {
       cubit = ThemeCubit(
         themeRepository: ThemeRepository(),
-        initialState: ThemeState(
+        initialState: const ThemeState(
           color: Colors.green,
           prevColor: Colors.red,
         ),
@@ -35,7 +35,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byKey(Key('animated_background')), findsOneWidget);
+      expect(find.byKey(const Key('animated_background')), findsOneWidget);
     });
   });
 }
