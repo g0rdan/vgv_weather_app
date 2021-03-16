@@ -1,37 +1,36 @@
 #!/bin/sh
 
 echo '[cleaning core package]:'
-cd core
+cd lib/core
 flutter clean
 flutter pub get
-cd ..
+cd ../..
 
 echo '[cleaning city selection package]:'
-cd features/city
+cd lib/features/city
 flutter clean
 flutter pub get
-cd ../..
+cd ../../..
 
 echo '[cleaning measurement system package]:'
-cd features/measurement_system
+cd lib/features/measurement_system
 flutter clean
 flutter pub get
-cd ../..
+cd ../../..
 
 echo '[cleaning theme package]:'
-cd features/theme
+cd lib/features/theme
 flutter clean
 flutter pub get
-cd ../..
+cd ../../..
 
 echo '[cleaning weather package]:'
-cd features/weather
+cd lib/features/weather
 flutter clean
 flutter pub get
-cd ../..
+cd ../../..
 
 echo '[cleaning main app]:'
-cd ..
 flutter clean
 flutter pub get
 
