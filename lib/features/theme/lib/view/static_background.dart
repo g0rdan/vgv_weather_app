@@ -15,6 +15,7 @@ class StaticBackground extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, themeState) {
         return Container(
+          key: const Key('static_background'),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
