@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_core/models/export.dart';
 import 'package:vgv_core/views/export.dart';
 import 'package:vgv_weather/view/export.dart';
-import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
+import 'package:vgv_weather_measurement_system/cubit/measurement_system_cubit.dart';
 
 class WeatherInfo extends StatelessWidget {
   const WeatherInfo({required this.weather});
@@ -37,7 +37,7 @@ class WeatherInfo extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               // ignore: lines_longer_than_80_chars
               child:
-                  BlocBuilder<TemperatureSwitchCubit, TemperatureSwitchState>(
+                  BlocBuilder<MeasurementSystemCubit, MeasurementSystemState>(
                 builder: (context, state) {
                   return Temperature(
                     temperature: weather.temp,

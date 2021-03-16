@@ -443,10 +443,10 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  vgv_weather_temperature_switch:
+  vgv_weather_measurement_system:
     dependency: "direct main"
     description:
-      path: "../temperature_switch"
+      path: "../measurement_system"
       relative: true
     source: path
     version: "0.0.1"

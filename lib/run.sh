@@ -12,8 +12,8 @@ flutter clean
 flutter pub get
 cd ../..
 
-echo '[cleaning temperature switch package]:'
-cd features/temperature_switch
+echo '[cleaning measurement system package]:'
+cd features/measurement_system
 flutter clean
 flutter pub get
 cd ../..

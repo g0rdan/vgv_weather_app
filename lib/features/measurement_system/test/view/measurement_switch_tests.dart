@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
-import 'package:vgv_weather_temperature_switch/view/export.dart';
+import 'package:vgv_weather_measurement_system/cubit/measurement_system_cubit.dart';
+import 'package:vgv_weather_measurement_system/view/export.dart';
 
 void main() {
   group('TemperatureSwitchState', () {
-    late TemperatureSwitchCubit cubit;
+    late MeasurementSystemCubit cubit;
 
     setUp(() {
-      cubit = TemperatureSwitchCubit();
+      cubit = MeasurementSystemCubit();
     });
 
     testWidgets('renders TemperatureSwitchState', (tester) async {
@@ -18,12 +18,12 @@ void main() {
           value: cubit,
           child: MaterialApp(
             home: Scaffold(
-              body: TemperatureSwitch(),
+              body: MeasurementSystemSwitch(),
             ),
           ),
         ),
       );
-      expect(find.byType(TemperatureSwitch), findsOneWidget);
+      expect(find.byType(MeasurementSystemSwitch), findsOneWidget);
     });
 
     testWidgets('find title', (tester) async {
@@ -32,7 +32,7 @@ void main() {
           value: cubit,
           child: MaterialApp(
             home: Scaffold(
-              body: TemperatureSwitch(),
+              body: MeasurementSystemSwitch(),
             ),
           ),
         ),
@@ -46,7 +46,7 @@ void main() {
           value: cubit,
           child: MaterialApp(
             home: Scaffold(
-              body: TemperatureSwitch(),
+              body: MeasurementSystemSwitch(),
             ),
           ),
         ),
@@ -63,7 +63,7 @@ void main() {
           value: cubit,
           child: MaterialApp(
             home: Scaffold(
-              body: TemperatureSwitch(),
+              body: MeasurementSystemSwitch(),
             ),
           ),
         ),

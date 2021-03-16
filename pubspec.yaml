@@ -21,8 +21,8 @@ dependencies:
     path: lib/core
   vgv_weather_city:
     path: lib/features/city
-  vgv_weather_temperature_switch:
-    path: lib/features/temperature_switch
+  vgv_weather_measurement_system:
+    path: lib/features/measurement_system
   vgv_theme:
     path: lib/features/theme
   vgv_weather:

@@ -13,12 +13,11 @@ import 'package:vgv_theme/repository/theme_repository.dart';
 import 'package:vgv_weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather/repository/weather/export.dart';
 import 'package:vgv_weather/view/export.dart';
-
 import 'package:vgv_weather_app/l10n/l10n.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:vgv_weather_city/bloc/city_selection_bloc.dart';
-import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
+import 'package:vgv_weather_measurement_system/cubit/measurement_system_cubit.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -59,7 +58,7 @@ class App extends StatelessWidget {
             ),
           ),
           BlocProvider(
-            create: (context) => TemperatureSwitchCubit(),
+            create: (context) => MeasurementSystemCubit(),
           ),
           BlocProvider(
             create: (context) => CitySelectionBloc(),

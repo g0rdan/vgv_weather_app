@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vgv_core/models/temperature.dart';
+import 'package:vgv_core/models/export.dart';
 
 class Temperature extends StatelessWidget {
   const Temperature({
@@ -12,7 +12,7 @@ class Temperature extends StatelessWidget {
   final double temperature;
   final double low;
   final double high;
-  final TemperatureUnit unit;
+  final MeasurementSystemEnum unit;
 
   @override
   Widget build(BuildContext context) {
@@ -52,5 +52,5 @@ class Temperature extends StatelessWidget {
   int _toFahrenheit(double celsius) => ((celsius * 9 / 5) + 32).round();
 
   int _formattedTemperature(double t) =>
-      unit == TemperatureUnit.fahrenheit ? _toFahrenheit(t) : t.round();
+      unit == MeasurementSystemEnum.imperial ? _toFahrenheit(t) : t.round();
 }

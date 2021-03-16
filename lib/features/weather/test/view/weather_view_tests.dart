@@ -3,15 +3,15 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:vgv_theme/cubit/theme_cubit.dart';
 import 'package:vgv_weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather_city/bloc/city_selection_bloc.dart';
-import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
+import 'package:vgv_weather_measurement_system/cubit/measurement_system_cubit.dart';
 
 class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState>
     implements WeatherBloc {}
 
 class MockThemeCubit extends MockCubit<ThemeState> implements ThemeCubit {}
 
-class MockTemperatureSwitchCubit extends MockCubit<TemperatureSwitchState>
-    implements TemperatureSwitchCubit {}
+class MockMeasurementSystemCubit extends MockCubit<MeasurementSystemState>
+    implements MeasurementSystemCubit {}
 
 class MockCitySelectionBloc
     extends MockBloc<CitySelectionEvent, CitySelectionState>
@@ -21,13 +21,13 @@ void main() {
   group('main page', () {
     late WeatherBloc weatherBloc;
     late ThemeCubit themeCubit;
-    late TemperatureSwitchCubit temperatureSwitchCubit;
+    late MeasurementSystemCubit temperatureSwitchCubit;
     late CitySelectionBloc citySelectionBloc;
 
     setUp(() {
       weatherBloc = MockWeatherBloc();
       themeCubit = MockThemeCubit();
-      temperatureSwitchCubit = MockTemperatureSwitchCubit();
+      temperatureSwitchCubit = MockMeasurementSystemCubit();
       citySelectionBloc = MockCitySelectionBloc();
     });
 

@@ -18,8 +18,8 @@ dependencies:
     path: ../../core
   vgv_theme:
     path: ../theme
-  vgv_weather_temperature_switch:
-    path: ../temperature_switch
+  vgv_weather_measurement_system:
+    path: ../measurement_system
   vgv_weather_city:
     path: ../city
 

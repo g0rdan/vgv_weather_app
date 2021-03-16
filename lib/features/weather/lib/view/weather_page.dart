@@ -8,7 +8,7 @@ import 'package:vgv_weather/bloc/weather_bloc.dart';
 import 'package:vgv_weather/view/export.dart';
 import 'package:vgv_weather_city/bloc/city_selection_bloc.dart';
 import 'package:vgv_weather_city/view/export.dart';
-import 'package:vgv_weather_temperature_switch/view/export.dart';
+import 'package:vgv_weather_measurement_system/view/export.dart';
 
 class WeatherPage extends StatefulWidget {
   @override
@@ -82,7 +82,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             Expanded(
                               child: ForecastView(weather: weather),
                             ),
-                            TemperatureSwitch(),
+                            MeasurementSystemSwitch(),
                           ],
                         ),
                       ),

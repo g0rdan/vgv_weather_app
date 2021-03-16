@@ -1,1 +1,0 @@
-library temperature_switch;

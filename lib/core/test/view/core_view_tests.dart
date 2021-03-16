@@ -1,6 +1,5 @@
-// import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vgv_core/models/temperature.dart';
+import 'package:vgv_core/models/export.dart';
 import 'package:vgv_core/models/weather_condition.dart';
 import 'package:vgv_core/views/export.dart';
 import '../helpers/helpers.dart';
@@ -37,7 +36,7 @@ void main() {
         high: 0.0,
         low: 0.0,
         temperature: 0.0,
-        unit: TemperatureUnit.celsius,
+        unit: MeasurementSystemEnum.metric,
       ));
       expect(find.byType(Temperature), findsOneWidget);
     });
@@ -47,7 +46,7 @@ void main() {
         high: 20.0,
         low: 20.0,
         temperature: 20.0,
-        unit: TemperatureUnit.celsius,
+        unit: MeasurementSystemEnum.metric,
       ));
       expect(find.textContaining('min: 20'), findsOneWidget);
       expect(find.textContaining('max: 20'), findsOneWidget);
@@ -58,22 +57,10 @@ void main() {
         high: 20.0,
         low: 20.0,
         temperature: 20.0,
-        unit: TemperatureUnit.fahrenheit,
+        unit: MeasurementSystemEnum.imperial,
       ));
       expect(find.textContaining('min: 68'), findsOneWidget);
       expect(find.textContaining('max: 68'), findsOneWidget);
     });
-  });
-
-  group('WeatherConditions', () {
-    testWidgets(
-      'Get exception since we don\'t have image assets',
-      (tester) async {
-        await tester.pumpApp(const WeatherConditions(
-          condition: WeatherCondition.clear,
-        ));
-        expect(tester.takeException(), isInstanceOf<Error>());
-      },
-    );
   });
 }
