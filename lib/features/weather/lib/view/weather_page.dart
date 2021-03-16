@@ -40,62 +40,73 @@ class _WeatherPageState extends State<WeatherPage> {
             ));
           }
         },
-        child: Column(
-          children: [
-            Expanded(
-              child: BlocConsumer<WeatherBloc, WeatherState>(
-                listener: (context, state) {
-                  if (state is WeatherLoadSuccess) {
-                    _refreshCompleter.complete();
-                    _refreshCompleter = Completer();
-                    BlocProvider.of<ThemeCubit>(context)
-                        .weatherChanged(state.weather.condition);
-                  }
-                },
-                builder: (context, state) {
-                  if (state is WeatherInitial) {
-                    return const Center(child: Text('Please Select Location'));
-                  }
-                  if (state is WeatherLoadInProgress) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  if (state is WeatherLoadFailure) {
-                    return const Center(
-                      child: Text(
-                        'Something went wrong!',
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    );
-                  }
-                  if (state is WeatherLoadSuccess) {
-                    final weather = state.weather;
-                    return AnimatedBackground(
-                      child: RefreshIndicator(
-                        onRefresh: () {
-                          BlocProvider.of<WeatherBloc>(context).add(
-                            WeatherRefreshRequested(
-                              city: weather.location,
-                              requestTime: DateTime.now(),
-                            ),
-                          );
-                          return _refreshCompleter.future;
-                        },
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: ForecastView(weather: weather),
-                            ),
-                            MeasurementSystemSwitch(),
-                          ],
+        child: StaticBackground(
+          child: Column(
+            children: [
+              Expanded(
+                child: BlocConsumer<WeatherBloc, WeatherState>(
+                  listener: (context, state) {
+                    if (state is WeatherLoadSuccess) {
+                      _refreshCompleter.complete();
+                      _refreshCompleter = Completer();
+                      BlocProvider.of<ThemeCubit>(context)
+                          .weatherChanged(state.weather.condition);
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is WeatherInitial) {
+                      return const Center(
+                        child: Text(
+                          'Please Select Location',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                    );
-                  }
-                  return const SizedBox.shrink();
-                },
+                      );
+                    }
+                    if (state is WeatherLoadInProgress) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (state is WeatherLoadFailure) {
+                      return const Center(
+                        child: Text(
+                          'Something went wrong!',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      );
+                    }
+                    if (state is WeatherLoadSuccess) {
+                      final weather = state.weather;
+                      return AnimatedBackground(
+                        child: RefreshIndicator(
+                          onRefresh: () {
+                            BlocProvider.of<WeatherBloc>(context).add(
+                              WeatherRefreshRequested(
+                                city: weather.location,
+                                requestTime: DateTime.now(),
+                              ),
+                            );
+                            return _refreshCompleter.future;
+                          },
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: ForecastView(weather: weather),
+                              ),
+                              MeasurementSystemSwitch(),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

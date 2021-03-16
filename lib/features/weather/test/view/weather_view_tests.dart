@@ -95,29 +95,7 @@ void main() {
       final searchButton = find.byKey(const Key('search_button'));
       await tester.tap(searchButton);
 
-      expect(find.text('Clear'), findsOneWidget);
+      expect(find.text('City'), findsOneWidget);
     });
-
-    // testWidgets('check tap on find', (tester) async {
-    //   await tester.pumpWidget(
-    //     BlocProvider.value(
-    //       value: CitySelectionBloc(),
-    //       child: MaterialApp(
-    //         home: Scaffold(
-    //           body: CitySelection(),
-    //         ),
-    //       ),
-    //     ),
-    //   );
-
-    //   final textField = find.byKey(const Key('text_form_field'));
-    //   await tester.tap(textField);
-    //   await tester.enterText(textField, 'Hello!');
-
-    //   final searchButton = find.byKey(const Key('search_button'));
-    //   await tester.tap(searchButton);
-
-    //   expect(find.text('Hello!'), findsOneWidget);
-    // });
   });
 }
