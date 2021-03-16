@@ -90,4 +90,12 @@ Tests for this feature will have the same structure:
 │   └── view
 ```
 
+You can see the test coverage by going to specific feature or core folder and run:
+
+```sh
+sh test/coverage.sh
+```
+
+It will automatically open a webpage with information about the coverage
+
 ---

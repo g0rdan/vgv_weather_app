@@ -17,6 +17,21 @@ void main() {
     });
   });
 
+  group('Weather Condition', () {
+    // testWidgets('renders WeatherConditions', (tester) async {
+    //   final condition = WeatherCondition.clear;
+    //   await tester.pumpApp(WeatherConditions(condition: condition));
+    //   expect(tester.takeException(), isInstanceOf<Exception>());
+
+    // expect(find.byType(WeatherConditions), findsOneWidget);
+    // });
+
+    // testWidgets('Shows rigth text in LastUpdated', (tester) async {
+    //   await tester.pumpApp(LastUpdated());
+    //   expect(find.textContaining('Updated:'), findsOneWidget);
+    // });
+  });
+
   group('Location', () {
     testWidgets('renders Location', (tester) async {
       await tester.pumpApp(const Location(location: ''));
