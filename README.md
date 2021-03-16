@@ -1,3 +1,5 @@
+![Preview](preview.gif)
+
 ## Getting Started
 
 In order to run the project you need to run:
