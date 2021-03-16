@@ -13,9 +13,9 @@ class WeatherInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
+    return ListView(
       children: [
+        const SizedBox(height: 100),
         Center(
           child: Text(
             weather.formattedCondition,

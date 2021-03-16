@@ -45,16 +45,15 @@ class _WeatherPageState extends State<WeatherPage> {
               child: BlocConsumer<WeatherBloc, WeatherState>(
                 listener: (context, state) {
                   if (state is WeatherLoadSuccess) {
-                    BlocProvider.of<ThemeCubit>(context)
-                        .weatherChanged(state.weather.condition);
                     _refreshCompleter.complete();
                     _refreshCompleter = Completer();
+                    BlocProvider.of<ThemeCubit>(context)
+                        .weatherChanged(state.weather.condition);
                   }
                 },
                 builder: (context, state) {
                   if (state is WeatherInitial) {
-                    return const Center(
-                        child: Text('Please Select a Location'));
+                    return const Center(child: Text('Please Select Location'));
                   }
                   if (state is WeatherLoadInProgress) {
                     return const Center(child: CircularProgressIndicator());
@@ -88,7 +87,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       ),
                     );
                   }
-                  return Container();
+                  return const SizedBox.shrink();
                 },
               ),
             ),

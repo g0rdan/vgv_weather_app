@@ -39,7 +39,7 @@ void main() {
       'check correct answer',
       () async {
         final weatherRepo = WeatherRepository(weatherApiClient: dataProvider);
-        final result = await weatherRepo.getWeather('New York');
+        final result = await weatherRepo.getForecast('New York');
         expect(result, succesfullWeather);
       },
     );
@@ -49,7 +49,7 @@ void main() {
       () async {
         final weatherRepo = WeatherRepository(weatherApiClient: dataProvider);
         try {
-          await weatherRepo.getWeather('');
+          await weatherRepo.getForecast('');
           fail('exception not thrown');
         } catch (e) {
           expect(e, isInstanceOf<WeatherException>());

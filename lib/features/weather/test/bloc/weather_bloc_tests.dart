@@ -26,13 +26,15 @@ void main() {
       locationId: 1,
     );
 
+    final updated = DateTime.now();
+
     setUp(() {
       weatherRepository = MockWeatherRepository();
-      when(() => weatherRepository.getWeather('New York'))
+      when(() => weatherRepository.getForecast('New York'))
           .thenAnswer((invocation) async => testWeatherModel);
-      when(() => weatherRepository.getWeather('incorrect request'))
+      when(() => weatherRepository.getForecast('incorrect request'))
           .thenThrow(Exception());
-      when(() => weatherRepository.getWeather('incorrect http request'))
+      when(() => weatherRepository.getForecast('incorrect http request'))
           .thenThrow(const HttpException('http exception'));
     });
 
@@ -49,7 +51,7 @@ void main() {
           bloc.add(const WeatherRequested(city: 'New York')),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
-        WeatherLoadSuccess(weather: testWeatherModel)
+        WeatherLoadSuccess(weather: testWeatherModel, updated: updated),
       ],
     );
 
@@ -58,8 +60,12 @@ void main() {
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) async =>
           bloc.add(const WeatherRefreshRequested(city: 'New York')),
-      expect: () =>
-          <WeatherState>[WeatherLoadSuccess(weather: testWeatherModel)],
+      expect: () => <WeatherState>[
+        WeatherLoadSuccess(
+          weather: testWeatherModel,
+          updated: updated,
+        )
+      ],
     );
 
     blocTest<WeatherBloc, WeatherState>(
@@ -94,8 +100,12 @@ void main() {
         // ignore: cascade_invocations
         bloc.add(const WeatherRefreshRequested(city: 'incorrect request'));
       },
-      expect: () =>
-          <WeatherState>[WeatherLoadSuccess(weather: testWeatherModel)],
+      expect: () => <WeatherState>[
+        WeatherLoadSuccess(
+          weather: testWeatherModel,
+          updated: updated,
+        )
+      ],
     );
   });
 
