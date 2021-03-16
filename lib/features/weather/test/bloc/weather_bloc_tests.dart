@@ -26,8 +26,6 @@ void main() {
       locationId: 1,
     );
 
-    final updated = DateTime.now();
-
     setUp(() {
       weatherRepository = MockWeatherRepository();
       when(() => weatherRepository.getForecast('New York'))
@@ -47,23 +45,30 @@ void main() {
     blocTest<WeatherBloc, WeatherState>(
       'check correct city request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
-      act: (WeatherBloc bloc) async =>
-          bloc.add(const WeatherRequested(city: 'New York')),
+      act: (WeatherBloc bloc) async => bloc.add(WeatherRequested(
+        city: 'New York',
+        requestTime: DateTime(2021),
+      )),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
-        WeatherLoadSuccess(weather: testWeatherModel, updated: updated),
+        WeatherLoadSuccess(
+          weather: testWeatherModel,
+          updated: DateTime(2021),
+        ),
       ],
     );
 
     blocTest<WeatherBloc, WeatherState>(
       'check correct city refresh request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
-      act: (WeatherBloc bloc) async =>
-          bloc.add(const WeatherRefreshRequested(city: 'New York')),
+      act: (WeatherBloc bloc) async => bloc.add(WeatherRefreshRequested(
+        city: 'New York',
+        requestTime: DateTime(2021),
+      )),
       expect: () => <WeatherState>[
         WeatherLoadSuccess(
           weather: testWeatherModel,
-          updated: updated,
+          updated: DateTime(2021),
         )
       ],
     );
@@ -71,8 +76,10 @@ void main() {
     blocTest<WeatherBloc, WeatherState>(
       'check incorrect city request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
-      act: (WeatherBloc bloc) async =>
-          bloc.add(const WeatherRequested(city: 'incorrect request')),
+      act: (WeatherBloc bloc) async => bloc.add(WeatherRequested(
+        city: 'incorrect request',
+        requestTime: DateTime(2021),
+      )),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
         const WeatherLoadFailure(
@@ -84,8 +91,10 @@ void main() {
     blocTest<WeatherBloc, WeatherState>(
       'check incorrect http city request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
-      act: (WeatherBloc bloc) async =>
-          bloc.add(const WeatherRequested(city: 'incorrect http request')),
+      act: (WeatherBloc bloc) async => bloc.add(WeatherRequested(
+        city: 'incorrect http request',
+        requestTime: DateTime(2021),
+      )),
       expect: () => <WeatherState>[
         WeatherLoadInProgress(),
         const WeatherLoadFailure(message: 'http exception')
@@ -96,14 +105,20 @@ void main() {
       'check incorrect city refresh request',
       build: () => WeatherBloc(weatherRepository: weatherRepository),
       act: (WeatherBloc bloc) {
-        bloc.add(const WeatherRefreshRequested(city: 'New York'));
+        bloc.add(WeatherRefreshRequested(
+          city: 'New York',
+          requestTime: DateTime(2021),
+        ));
         // ignore: cascade_invocations
-        bloc.add(const WeatherRefreshRequested(city: 'incorrect request'));
+        bloc.add(WeatherRefreshRequested(
+          city: 'incorrect request',
+          requestTime: DateTime(2021),
+        ));
       },
       expect: () => <WeatherState>[
         WeatherLoadSuccess(
           weather: testWeatherModel,
-          updated: updated,
+          updated: DateTime(2021),
         )
       ],
     );
@@ -111,13 +126,19 @@ void main() {
 
   group('WeatherEvent', () {
     test('check props of WeatherRequested', () {
-      final event = const WeatherRequested(city: 'New York');
-      expect(event.props.length, 1);
+      final event = WeatherRequested(
+        city: 'New York',
+        requestTime: DateTime(2021),
+      );
+      expect(event.props.length, 2);
     });
 
     test('check props of WeatherRefreshRequested', () {
-      final event = const WeatherRefreshRequested(city: 'New York');
-      expect(event.props.length, 1);
+      final event = WeatherRefreshRequested(
+        city: 'New York',
+        requestTime: DateTime(2021),
+      );
+      expect(event.props.length, 2);
     });
   });
 }

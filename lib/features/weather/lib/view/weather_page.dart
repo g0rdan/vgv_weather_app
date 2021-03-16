@@ -36,6 +36,7 @@ class _WeatherPageState extends State<WeatherPage> {
             }
             BlocProvider.of<WeatherBloc>(context).add(WeatherRequested(
               city: state.name,
+              requestTime: DateTime.now(),
             ));
           }
         },
@@ -72,7 +73,10 @@ class _WeatherPageState extends State<WeatherPage> {
                       child: RefreshIndicator(
                         onRefresh: () {
                           BlocProvider.of<WeatherBloc>(context).add(
-                            WeatherRefreshRequested(city: weather.location),
+                            WeatherRefreshRequested(
+                              city: weather.location,
+                              requestTime: DateTime.now(),
+                            ),
                           );
                           return _refreshCompleter.future;
                         },

@@ -29,7 +29,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     yield WeatherLoadInProgress();
     try {
       final weather = await weatherRepository.getForecast(event.city);
-      yield WeatherLoadSuccess(weather: weather, updated: DateTime.now());
+      yield WeatherLoadSuccess(weather: weather, updated: event.requestTime);
     } on HttpException catch (e) {
       yield WeatherLoadFailure(message: e.message);
     } catch (_) {
@@ -44,7 +44,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   ) async* {
     try {
       final weather = await weatherRepository.getForecast(event.city);
-      yield WeatherLoadSuccess(weather: weather, updated: DateTime.now());
+      yield WeatherLoadSuccess(weather: weather, updated: event.requestTime);
     } catch (_) {
       yield state;
     }
