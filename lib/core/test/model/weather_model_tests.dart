@@ -11,24 +11,28 @@ void main() {
           'title': 'title',
           'consolidated_weather': [
             {
-              'weather_state_abbr': 'sn',
-              'weather_state_name': 'Snow',
               'min_temp': 20.0,
               'the_temp': 20.0,
               'max_temp': 20.0,
+              'wind_speed': 5.2,
+              'humidity': 90,
+              'weather_state_abbr': 'sn',
+              'weather_state_name': 'Snow',
               'created': 'created',
             }
           ]
         }),
         const Weather(
+          temp: 20.0,
+          maxTemp: 20.0,
+          minTemp: 20.0,
+          windSpeed: 5.2,
+          humidity: 90,
           condition: WeatherCondition.snow,
           created: 'created',
           formattedCondition: 'Snow',
           location: 'title',
           locationId: 123,
-          maxTemp: 20.0,
-          minTemp: 20.0,
-          temp: 20.0,
         ),
       );
     });

@@ -20,7 +20,7 @@ void main() {
 
   group('Location', () {
     testWidgets('renders Location', (tester) async {
-      await tester.pumpApp(Location(location: ''));
+      await tester.pumpApp(const Location(location: ''));
       expect(find.byType(Location), findsOneWidget);
     });
 

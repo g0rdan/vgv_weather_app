@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_core/models/export.dart';
 import 'package:vgv_core/views/export.dart';
+import 'package:vgv_weather/view/export.dart';
 import 'package:vgv_weather_temperature_switch/cubit/temperature_switch_cubit.dart';
 
 class WeatherInfo extends StatelessWidget {
@@ -48,6 +49,15 @@ class WeatherInfo extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        Center(
+          child: Column(
+            children: [
+              WindView(weather: weather),
+              const SizedBox(height: 20),
+              Humidity(weather: weather),
+            ],
+          ),
         ),
       ],
     );

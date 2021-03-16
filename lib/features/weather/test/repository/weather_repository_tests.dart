@@ -11,14 +11,16 @@ void main() {
     late WeatherDataProvider dataProvider;
 
     final succesfullWeather = const Weather(
+      temp: 20.0,
+      maxTemp: 20.0,
+      minTemp: 20.0,
+      windSpeed: 5.2,
+      humidity: 90,
       condition: WeatherCondition.clear,
       created: 'created',
       formattedCondition: 'Clear',
       location: 'New York',
       locationId: 1,
-      maxTemp: 20.0,
-      minTemp: 20.0,
-      temp: 20.0,
     );
 
     setUp(() {
