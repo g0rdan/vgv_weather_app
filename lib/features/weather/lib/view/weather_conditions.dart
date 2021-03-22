@@ -10,30 +10,45 @@ class WeatherConditions extends StatelessWidget {
   Widget build(BuildContext context) => _mapConditionToImage(condition);
 
   Image _mapConditionToImage(WeatherCondition condition) {
-    Image image;
+    AssetImage image;
     switch (condition) {
       case WeatherCondition.clear:
       case WeatherCondition.lightCloud:
       case WeatherCondition.unknown:
-        image = Image.asset('assets/sun.gif');
+        image = const AssetImage(
+          'assets/sun.gif',
+          package: 'vgv_weather',
+        );
         break;
       case WeatherCondition.hail:
       case WeatherCondition.snow:
       case WeatherCondition.sleet:
-        image = Image.asset('assets/snow.gif');
+        image = const AssetImage(
+          'assets/snow.gif',
+          package: 'vgv_weather',
+        );
         break;
       case WeatherCondition.heavyCloud:
-        image = Image.asset('assets/cloud.gif');
+        image = const AssetImage(
+          'assets/cloud.gif',
+          package: 'vgv_weather',
+        );
         break;
       case WeatherCondition.heavyRain:
       case WeatherCondition.lightRain:
       case WeatherCondition.showers:
-        image = Image.asset('assets/rain.gif');
+        image = const AssetImage(
+          'assets/rain.gif',
+          package: 'vgv_weather',
+        );
         break;
       case WeatherCondition.thunderstorm:
-        image = Image.asset('assets/thunderstorm.gif');
+        image = const AssetImage(
+          'assets/thunderstorm.gif',
+          package: 'vgv_weather',
+        );
         break;
     }
-    return image;
+    return Image(image: image);
   }
 }

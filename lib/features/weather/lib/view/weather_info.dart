@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_core/models/export.dart';
 import 'package:vgv_core/views/export.dart';
 import 'package:vgv_weather/view/export.dart';
+import 'package:vgv_weather/view/weather_conditions.dart';
 import 'package:vgv_weather_measurement_system/cubit/measurement_system_cubit.dart';
 
 class WeatherInfo extends StatelessWidget {

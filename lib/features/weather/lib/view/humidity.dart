@@ -17,8 +17,11 @@ class Humidity extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         spacing: 5.0,
         children: [
-          Image.asset(
-            'assets/humidity.png',
+          const Image(
+            image: AssetImage(
+              'assets/humidity.png',
+              package: 'vgv_weather',
+            ),
             width: 30,
             color: Colors.white,
           ),

@@ -21,8 +21,11 @@ class WindView extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             spacing: 10.0,
             children: [
-              Image.asset(
-                'assets/wind.png',
+              const Image(
+                image: AssetImage(
+                  'assets/wind.png',
+                  package: 'vgv_weather',
+                ),
                 width: 30,
                 color: Colors.white,
               ),
